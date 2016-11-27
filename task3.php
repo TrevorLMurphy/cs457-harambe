@@ -39,8 +39,8 @@
         if (!$result) {
             die('SQL error: '.mysql_error());
         }
+        // mysql_free_result($result); Freeing the result produced problems...
         print "<h2>YOUR VALUES HAVE BEEN INSERTED! GO BACK TO SEE THEM OR QUERY!</h2>";
-        mysql_free_result($result);
     } else if (isset($_POST['display'])) {
         $query =
         "select * from animal";
@@ -52,11 +52,11 @@
         echo "<table border='1'>";
         $resume = createHeaders($result);
         fillTable($resume, $result);
+        mysql_free_result($result);
         echo "</table";
         echo "<br>";
         echo "<hr>";
         echo "<h2> DISPLAY </h2>";
-        mysql_free_result($result);
     } else {
         $age = $_POST['query'];
         $query =
@@ -70,11 +70,11 @@
         echo "<table border='1'>";
         $resume = createHeaders($result);
         fillTable($resume, $result);
+        mysql_free_result($result);
         echo "</table";
         echo "<br>";
         echo "<hr>";
         echo "<h2> QUERY </h2>";
-        mysql_free_result($result);
     }
 
     function createHeaders($result) {
@@ -104,3 +104,4 @@
     }
 
     mysql_close($link);
+?>
