@@ -3,12 +3,80 @@
     <head>
         <meta charset="utf-8">
         <title>HARAMBE LIVES</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <form action="hello.php" method="post">
+        <!-- Task 1 Form -->
+        <br>
+        <form action="task1.php" method="post">
             <p align="center">
-                <input type="submit" value="Button1" />
+                Display all tables and their contents
+                <br><br>
+                <input type="submit" value="TASK 1" class="myButton" />
             </p>
+        </form>
+        <br><br>
+        <hr>
+        <br><br>
+        <!-- Task 2 Form -->
+        <form action="task2.php" method="post">
+            <p align="center">
+                Input "alive" or "dead" to see which animals are alive and
+                which are dead
+                <br><br>
+                <input type="text" name="status" value="alive/dead" />
+                <input type="submit" name="statusButton" value="TASK 2" class="myButton" />
+            </p>
+            <br><br>
+            <p align="center">
+                TESTS THE JOIN
+                <br>
+                This query will display the employee ID, name and the exhibit
+                they work in, and the ecosystem of the exhibit for a given department. <br>
+                Valid departments are:
+                Fish, Mammals, Amphibians, Reptiles, Birds
+                <br><br>
+                <input type="text" name="exhibit" />
+                <input type="submit" name="exhibitButton" value="TASK 2" class="myButton" />
+            </p>
+        </form>
+        <br><br>
+        <hr>
+        <br><br>
+        <!-- Task 3 Form -->
+        <form action="task3.php" method="post">
+            <p align="center">
+                TASK 3: Now you can insert your own data!
+                <br><br>
+                insert animal ID (6 digit number) <input type="text" name="id" /><br>
+                insert animal's species (string) <input type="text" name="species" /><br>
+                insert animal's Name (string) <input type="text" name="name" /><br>
+                insert animal's age (3 digit number) <input type="text" name="age" /><br>
+                insert whether the animal is alive or dead (alive or dead) <input type="text" name="status" /><br>
+                insert animal owner's empID (6 digit number) <input type="text" name="eid" /><br>
+                insert the exhibt name that the animal belongs in (string) <input type="text" name="exhibit" /><br>
+                <br>
+                <input type="submit" name="insert" value="INSERT VALUES" class="myButton" />
+                <br><br>
+                <input type="submit" name="display" value="DISPLAY TABLE" class="myButton" />
+                <br><br><br><br>
+                Input an age and see all animals greater than that age!<br><br>
+                <input type="text" name="query" />
+                <input type="submit" name="queryButton" value="QUERY" class="myButton" />
+            </p>
+        </form>
+        <br><br>
+        <hr>
+        <br><br>
+        <!-- Task 4 Form -->
+        <form action="task4.php" method="post">
+            <p align="center">
+                A view has been created that contains the animal id, animal name,
+                employee id, and employee name.
+                <br><br>
+                <input type="submit" name="view" value="TASK 4" class="myButton" />
+            </p>
+            <br><br>
         </form>
     </body>
 </html>
