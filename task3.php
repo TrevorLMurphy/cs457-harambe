@@ -5,15 +5,28 @@
     }
     mysql_select_db('tmurphy') or die('Could not select database...');
 
-
-    if (isset($_POST['insert'])) {
+    if (isset($_POST['checkID'])) {
+        $query =
+        "select employeeID, name, eName from zookeeper";
+        $result = mysql_query($query);
+        if (!$result) {
+            die('SQL error: '.mysql_error());
+        }
+        echo "<table border='1'>";
+        $resume = createHeaders($result);
+        fillTable($resume, $result);
+        mysql_free_result($result);
+        echo "</table";
+        echo "<br>";
+        echo "<hr>";
+        echo "<h2> EMPLOYEE ID'S </h2>";
+    } elseif (isset($_POST['insert'])) {
         $id = $_POST['id'];
         $species = $_POST['species'];
         $name = $_POST['name'];
         $age = $_POST['age'];
         $status = $_POST['status'];
         $owner = $_POST['eid'];
-        $exhibit = $_POST['exhibit'];
 
         if ($status !== "alive" && $status !== "dead") {
             die("I said to enter dead or alive...not $status! Go back and try again!");
@@ -21,7 +34,20 @@
         $species = "'" . $species . "'";
         $name = "'" . $name . "'";
         $status = "'" . $status . "'";
-        $exhibit = "'" . $exhibit . "'";
+
+        // First, check if the Employee ID exists...
+        $checkID = "select employeeID from zookeeper where employeeID = $owner";
+        $result = mysql_query($checkID);
+        $array = mysql_fetch_array($result);
+
+        if (empty($array)) {
+            die("EMPLOYEE ID NOT VALID, PLEASE TRY AGAIN!");
+        }
+
+        // Employees are tied to a specific exhibit, so get that exhibit...
+        $getExhibit = mysql_query("select eName from zookeeper where employeeID = $owner");
+        $exhibitArray = mysql_fetch_row($getExhibit);
+        $exhibit = "'" . $exhibitArray[0] . "'";
 
         $query =
         "insert into animal
@@ -41,7 +67,7 @@
         }
         // mysql_free_result($result); Freeing the result produced problems...
         print "<h2>YOUR VALUES HAVE BEEN INSERTED! GO BACK TO SEE THEM OR QUERY!</h2>";
-    } else if (isset($_POST['display'])) {
+    } elseif (isset($_POST['display'])) {
         $query =
         "select * from animal";
         $result = mysql_query($query);

@@ -31,7 +31,7 @@
             <p align="center">
                 TESTS THE JOIN
                 <br>
-                This query will display the employee ID, name and the exhibit
+                This query will display the employee ID, name, the exhibit
                 they work in, and the ecosystem of the exhibit for a given department. <br>
                 Please enter one of these departments:
                 Fish, Mammals, Amphibians, Reptiles, Birds
@@ -46,7 +46,13 @@
         <!-- Task 3 Form -->
         <form action="task3.php" method="post">
             <p align="center">
-                TASK 3: Now you can insert your own data!
+                TASK 3: Now you can insert your own data!<br>
+                <strong>Make sure that the empID you enter is an ID of an existing employee!<br>
+                    Also, the animal you insert will automatically be placed in the exhibit that
+                    the employee is assigned to, <br> so make sure you pick an appropriate employee!<br>
+                    To check the existing employeeIDs...</strong>
+                <br><br>
+                <input type="submit" name="checkID" value="Check Employee ID's" class="smallButton" />
                 <br><br>
                 insert animal ID (6 digit number) <input type="text" name="id" /><br>
                 insert animal's species (string) <input type="text" name="species" /><br>
@@ -54,7 +60,6 @@
                 insert animal's age (3 digit number) <input type="text" name="age" /><br>
                 insert whether the animal is alive or dead (alive or dead) <input type="text" name="status" /><br>
                 insert animal owner's empID (6 digit number) <input type="text" name="eid" /><br>
-                insert the exhibt name that the animal belongs in (string) <input type="text" name="exhibit" /><br>
                 <br>
                 <input type="submit" name="insert" value="INSERT VALUES" class="myButton" />
                 <br><br>
